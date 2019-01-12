@@ -1,19 +1,10 @@
+const generateQR = require('./generate');
+const { deflateString } = require('./compress');
 const fs = require('fs');
-const request = require('request');
 
-const options = {
-  method: "POST",
-  url: "http://api.qrserver.com/v1/read-qr-code/",
-  port: 80,
-  headers: {
-    "Content-Type": "multipart/form-data"
-  },
-  formData : {
-    "file" : fs.createReadStream("./noticiadelarua.jpeg")
-  }
-};
+const compressTextAndGenerateQR = text => generateQR(deflateString(text));
 
-request(options, function (err, res, body) {
-  if(err) console.log(err);
-  console.log(body);
-});
+//compressTextAndGenerateQR("Some text");
+
+var text = fs.readFileSync('./inputs/short-input.txt','utf8');
+compressTextAndGenerateQR(text);

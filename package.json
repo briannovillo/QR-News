@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/briannovillo/QR-News#readme",
   "dependencies": {
-    "request": "^2.88.0"
+    "pako": "1.0.7",
+    "qrcode": "1.3.2"
   }
 }
